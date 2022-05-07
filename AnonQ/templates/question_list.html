@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>List of questions</title>
+</head>
+<body style="font-family: sans-serif;">
+    <h2>List of questions</h2>
+    <dl>
+        {% for a in questions %}
+            <dt><a href="/question/{{ a.id }}">{{ a.q_title }}</a></dt><dd>{{ a.q_content }}</dd>
+        {% empty %}
+            <dt>EMPTY</dt><dd>Be the first one to ask questions!</dd>
+        {% endfor %}
+    </dl>
+    <hr />
+    <a href="/ask/">ASK ONE!</a>
+</body>
+</html>

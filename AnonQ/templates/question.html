@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Question: {{ title }}</title>
+</head>
+<body style="font-family: sans-serif;">
+    <h2>{{ title }}</h2>
+    <p>{{ content }}</p>
+    <h3>Answer(s):</h3>
+    <ul>
+        {% for a in answers %}
+            <li><a href="/answer/{{ a }}">Answer {{ a }}</a></li>
+        {% empty %}
+            <li>[EMPTY]</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
