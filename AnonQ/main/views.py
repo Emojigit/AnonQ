@@ -62,8 +62,8 @@ def m_gui_question(request, id: int):
         return_t["title"] = q.q_title
         return_t["content"] = q.q_content
         return_t["answers"] = []
-        for x in Answer.objects.filter(a_question=q).values_list("id"):
-            return_t["answers"].append(x[0])
+        for x in Answer.objects.filter(a_question=q).values_list("id","a_content"):
+            return_t["answers"].append((x[0],x[1]))
         return render(request, "question.html",return_t)
     else:
         return render(request, "ask_error.html",{"status": "Not Found"},status=404)

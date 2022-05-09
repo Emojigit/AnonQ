@@ -12,7 +12,7 @@
     <h3>Answer(s):</h3>
     <ul>
         {% for a in answers %}
-            <li><a href="/answer/{{ a }}">Answer {{ a }}</a></li>
+            <li><a href="/answer/{{ a.0 }}">{{ a.1 }}</a></li>
         {% empty %}
             <li>[EMPTY]</li>
         {% endfor %}
