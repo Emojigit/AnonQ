@@ -21,7 +21,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@4b23v&vk=!r(s+uw@_=r2$=dz#%18i514c90=4(ck&elh+nzh'
+#SECRET_KEY = 'django-insecure-@4b23v&vk=!r(s+uw@_=r2$=dz#%18i514c90=4(ck&elh+nzh'
+def setseckey():
+    global SECRET_KEY
+    with open(BASE_DIR / "secretkey.txt") as k:
+        SECRET_KEY = k.read().strip()
+try:
+    setseckey()
+except FileNotFoundError:
+    from django.core.management.utils import get_random_secret_key
+    with open(BASE_DIR / "secretkey.txt", 'w+') as k:
+        k.write(get_random_secret_key())
+    setseckey()
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
